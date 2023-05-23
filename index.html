@@ -4,27 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>Expense tracker</title>
+    <link rel="shortcut icon" href="#">
+    
+    <script src="./js/script.js" defer></script>
   </head>
   <body>
     <h1>Expense Tracker</h1>
     <div class="input-card">
-      <form>
+      <form id="expense-form">
         <label for="name">Transaction name:</label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="transaction"
+          name="transaction"
           placeholder="Your transaction"
         />
 
         <div class="first-div">
           <label for="category">Choose category:</label>
           <select name="category" id="category">
-            <option value="food">Food & Dining</option>
-            <option value="transportation">Transportation</option>
-            <option value="utilities">Utilities</option>
+            <option value="Food">Food & Dining</option>
+            <option value="Transportation">Transportation</option>
+            <option value="Utilities">Utilities</option>
           </select>
 
           <label for="date">Choose Date:</label>

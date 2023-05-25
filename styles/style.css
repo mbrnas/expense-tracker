@@ -1,5 +1,10 @@
 body {
-    font-family: 'Quicksand', sans-serif;
+      font-family: 'Quicksand', sans-serif;
+  
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+    
   }
   
   .input-card {
@@ -80,3 +85,29 @@ body {
     margin: 0px 0px 20px 0px;
   }
   
+
+  .pie-card{
+    width: 500px;
+    padding: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title{
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  gap: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  }

@@ -4,53 +4,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="shortcut icon" href="#">
-    
+    <link rel="shortcut icon" href="#" />
     <script src="./js/script.js" defer></script>
   </head>
   <body>
-    <h1>Expense Tracker</h1>
-    <div class="input-card">
-      <form id="expense-form">
-        <label for="name">Transaction name:</label>
-        <input
-          type="text"
-          id="transaction"
-          name="transaction"
-          placeholder="Your transaction"
-        />
-
-        <div class="first-div">
-          <label for="category">Choose category:</label>
-          <select name="category" id="category">
-            <option value="Food">Food & Dining</option>
-            <option value="Transportation">Transportation</option>
-            <option value="Utilities">Utilities</option>
-          </select>
-
-          <label for="date">Choose Date:</label>
-          <input type="date" id="date" />
-        </div>
-
-        <div class="second-div">
-          <label for="payment-type">Payment type:</label>
-          <label for="cash">Cash</label>
-          <input type="radio" id="cash" name="cash-payment" value="cash" />
-
-          <label for="credit">Credit</label>
+    <div class="title">
+      <h1>Expense Tracker</h1>
+    </div>
+    <div class="container">
+      <div class="input-card">
+        <form id="expense-form">
+          <label for="name">Transaction name:</label>
           <input
-            type="radio"
-            id="credit"
-            name="credit-payment"
-            value="credit"
+            type="text"
+            id="transaction"
+            name="transaction"
+            placeholder="Your transaction"
           />
-          <label for="cash">Debit</label>
-          <input type="radio" id="debit" name="debit-payment" value="debit" />
-        </div>
 
-        <div class="amount-div">
+          <div class="first-div">
+            <label for="category">Choose category:</label>
+            <select name="category" id="category">
+              <option value="Food">Food & Dining</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Utilities">Utilities</option>
+            </select>
+
+            <label for="date">Choose Date:</label>
+            <input type="date" id="date" />
+          </div>
+
+          <div class="second-div">
+            <label for="payment-type">Payment type:</label>
+            <label for="cash">Cash</label>
+            <input type="radio" id="cash" name="cash-payment" value="cash" />
+
+            <label for="credit">Credit</label>
+            <input
+              type="radio"
+              id="credit"
+              name="credit-payment"
+              value="credit"
+            />
+            <label for="cash">Debit</label>
+            <input type="radio" id="debit" name="debit-payment" value="debit" />
+          </div>
+
+          <div class="amount-div">
             <label for="amount">Amount spent:</label>
             <input
               type="number"
@@ -59,18 +61,22 @@
               step="0.01"
               placeholder="Enter the amount spent"
             />
-        </div>
-      
+          </div>
 
-        <label for="message">Description:</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Your message"
-        ></textarea>
+          <label for="message">Description:</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Your message"
+          ></textarea>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div class="pie-card">
+        <h1>Pie Chart:</h1>
+      </div>
     </div>
   </body>
 </html>

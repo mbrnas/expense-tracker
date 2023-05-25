@@ -35,7 +35,7 @@ function handleFormSubmit(event) {
   }
 
   const expenseDiv = document.createElement("div");
-  expenseDiv.textContent = transactionValue + ' ' + categoryValue + ' ' + dateValue + ' ' + amountValue;
+  expenseDiv.textContent = transactionValue + ' ' + 'spent on,' + ' '  + categoryValue + ' ' + ', on date: ' + dateValue + ' ' + ', amount: ' + amountValue;
   expenseField.appendChild(expenseDiv);
 
   createPieChart(expenses);

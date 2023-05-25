@@ -7,81 +7,69 @@ const description = document.getElementById("description");
 
 const expenseForm = document.getElementById("expense-form");
 
+let expenses = [];
+
 function handleFormSubmit(event) {
   event.preventDefault();
-  const transactionValue = transaction.value;
-  const categoryValue = category.value;
-  const dateValue = date.value;
-  let selectedPaymentType = null;
 
-  for (let i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-      selectedPaymentType = radios[i].value;
-      break;
-    }
+  const categoryValue = category.value;
+  const amountValue = amount.value;
+  const transactionValue = transaction.value;
+
+  // Check if an expense with the same category already exists
+  const existingExpenseIndex = expenses.findIndex(
+    (expense) => expense.category === categoryValue
+  );
+
+  if (existingExpenseIndex !== -1) {
+    // If an expense with the same category exists, update the amount
+    expenses[existingExpenseIndex].amount = amountValue;
+  } else {
+    // Otherwise, create a new expense object
+    const expense = {
+      category: categoryValue,
+      transaction: transactionValue,
+      amount: amountValue,
+    };
+
+    expenses.push(expense);
   }
 
-  const amountValue = amount.value;
-  const descriptionValue = description.value;
-
-  const expense = {
-    transaction: transactionValue,
-    category: categoryValue,
-    date: dateValue,
-    paymentType: selectedPaymentType,
-    amount: amountValue,
-    description: descriptionValue,
-  };
-
-  console.log(expense);
+  createPieChart(expenses);
 
   expenseForm.reset();
 }
 
 expenseForm.addEventListener("submit", handleFormSubmit);
 
+const pieChartCanvas = document.getElementById("pie-chart");
 
-// Get a reference to the canvas element
-const pieChartCanvas = document.getElementById('pie-chart');
-
-// Function to create and update the pie chart
 function createPieChart(data) {
-  // Extract labels and amounts from the expense data
-  const labels = data.map(expense => expense.category);
-  const amounts = data.map(expense => expense.amount);
+  const labels = data.map((expense) => expense.category);
+  const amounts = data.map((expense) => expense.amount);
+  const transactions = data.map((expense) => expense.transaction);
 
-  // Create the chart using Chart.js
+  // Destroy the previous chart if it exists
+  if (pieChartCanvas.chart) {
+    pieChartCanvas.chart.destroy();
+  }
+
   const pieChart = new Chart(pieChartCanvas, {
-    type: 'pie',
+    type: "pie",
     data: {
       labels: labels,
-      datasets: [{
-        data: amounts,
-        backgroundColor: ['#2CD3E1', '#FF6384', '#36A2EB', '#FFCE56'], // Customize the colors as needed
-      }],
+      datasets: [
+        {
+          data: amounts,
+          backgroundColor: ["#2CD3E1", "#FF6384", "#36A2EB", "#FFCE56"],
+        },
+      ],
     },
     options: {
       responsive: true,
-      maintainAspectRatio: true, // Adjust as per your layout needs
+      maintainAspectRatio: true,
     },
   });
+
+  pieChartCanvas.chart = pieChart; // Store the chart instance in the canvas object
 }
-
-// Example expense data
-const expenses2 = [
-  {
-    category: 'Food',
-    amount: 100,
-  },
-  {
-    category: 'Transportation',
-    amount: 80,
-  },
-  {
-    category: 'Utilities',
-    amount: 75,
-  },
-];
-
-// Call the createPieChart function with the expense data
-createPieChart(expenses2);

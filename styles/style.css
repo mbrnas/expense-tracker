@@ -98,9 +98,10 @@ body {
   gap: 30px;
   margin-left: auto;
   margin-right: auto;
-  overflow: auto; /* Add this line */
+  overflow: hidden; /* Add this line */
   background-color: none;
   padding:15px;
+  
 }
 
 .pie-card {
@@ -112,6 +113,7 @@ body {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   background-color: white;
   border-radius: 10px;
+  text-align: center;
 }
 
 #pie-chart {
@@ -121,4 +123,18 @@ body {
 
 #expense-form {
   padding: 50px;
+}
+
+.expense-field{
+  width: 92%;
+ /* Adjust the height to your preference */
+  padding: 35px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }

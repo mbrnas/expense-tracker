@@ -1,7 +1,7 @@
 body {
       font-family: 'Quicksand', sans-serif;
   
-  height: 100vh;
+
   margin: 0;
   padding: 0;
     
@@ -86,28 +86,33 @@ body {
   }
   
 
-  .pie-card{
-    width: 500px;
-    padding: 35px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
+ 
+  
   .title{
     text-align: center;
     margin-top: 20px;
   }
 
-  .container{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  max-width: 1200px;
-  gap: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    gap: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto; /* Add this line */
   }
+  
+  .pie-card {
+    width: 500px;
+    padding: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Add this line */
+    z-index: 1; /* Add this line */
+  }
+  
+  

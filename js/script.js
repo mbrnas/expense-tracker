@@ -4,8 +4,9 @@ const date = document.getElementById("date");
 const radios = document.getElementsByName("payment-type");
 const amount = document.getElementById("amount");
 const description = document.getElementById("description");
-
 const expenseForm = document.getElementById("expense-form");
+
+const expenseField = document.getElementById("expense-field");
 
 let expenses = [];
 
@@ -15,28 +16,29 @@ function handleFormSubmit(event) {
   const categoryValue = category.value;
   const amountValue = amount.value;
   const transactionValue = transaction.value;
+  const dateValue = date.value;
+  
 
-  // Check if an expense with the same category already exists
   const existingExpenseIndex = expenses.findIndex(
     (expense) => expense.category === categoryValue
   );
 
   if (existingExpenseIndex !== -1) {
-    // If an expense with the same category exists, update the amount
     expenses[existingExpenseIndex].amount = amountValue;
   } else {
-    // Otherwise, create a new expense object
     const expense = {
       category: categoryValue,
       transaction: transactionValue,
       amount: amountValue,
     };
-
     expenses.push(expense);
   }
 
-  createPieChart(expenses);
+  const expenseDiv = document.createElement("div");
+  expenseDiv.textContent = transactionValue + ' ' + 'spent on,' + ' '  + categoryValue + ' ' + ', on date: ' + dateValue + ' ' + ', amount: ' + amountValue;
+  expenseField.appendChild(expenseDiv);
 
+  createPieChart(expenses);
   expenseForm.reset();
 }
 
@@ -49,7 +51,6 @@ function createPieChart(data) {
   const amounts = data.map((expense) => expense.amount);
   const transactions = data.map((expense) => expense.transaction);
 
-  // Destroy the previous chart if it exists
   if (pieChartCanvas.chart) {
     pieChartCanvas.chart.destroy();
   }
@@ -71,5 +72,5 @@ function createPieChart(data) {
     },
   });
 
-  pieChartCanvas.chart = pieChart; // Store the chart instance in the canvas object
+  pieChartCanvas.chart = pieChart;
 }

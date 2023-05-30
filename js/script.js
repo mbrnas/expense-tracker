@@ -35,7 +35,13 @@ function handleFormSubmit(event) {
   }
 
   const expenseDiv = document.createElement("div");
-  expenseDiv.textContent = transactionValue + ' ' + 'spent on,' + ' '  + categoryValue + ' ' + ', on date: ' + dateValue + ' ' + ', amount: ' + amountValue;
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "Remove";
+  removeButton.addEventListener("click", () => {
+    removeExpense(expenseDiv);
+  });
+  expenseDiv.textContent = transactionValue + ', ' + 'spent on:' + ' '  + categoryValue + ' ' + ', on date: ' + dateValue + ' ' + ', amount: ' + amountValue;
+  expenseDiv.appendChild(removeButton);
   expenseField.appendChild(expenseDiv);
 
   createPieChart(expenses);
@@ -44,12 +50,37 @@ function handleFormSubmit(event) {
 
 expenseForm.addEventListener("submit", handleFormSubmit);
 
+
+//function to remove expense on click of remove button
+function removeExpense(expenseDiv) {
+  expenseDiv.remove();
+
+  const transactionValue = expenseDiv.textContent.split(",")[0];
+  const categoryValue = expenseDiv.textContent.split("spent on:")[1].split(",")[0].trim();
+  const dateValue = expenseDiv.textContent.split("on date:")[1].split(",")[0].trim();
+  const amountValue = expenseDiv.textContent.split("amount:")[1].trim();
+
+  const existingExpenseIndex = expenses.findIndex(
+    (expense) =>
+      expense.transaction === transactionValue &&
+      expense.category === categoryValue &&
+      expense.date === dateValue &&
+      expense.amount === amountValue
+  );
+
+  if (existingExpenseIndex !== -1) {
+    expenses.splice(existingExpenseIndex, 1);
+  }
+
+  createPieChart(expenses);
+}
+
+
 const pieChartCanvas = document.getElementById("pie-chart");
 
 function createPieChart(data) {
   const labels = data.map((expense) => expense.category);
   const amounts = data.map((expense) => expense.amount);
-  const transactions = data.map((expense) => expense.transaction);
 
   if (pieChartCanvas.chart) {
     pieChartCanvas.chart.destroy();

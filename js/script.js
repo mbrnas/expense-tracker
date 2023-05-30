@@ -36,7 +36,7 @@ function handleFormSubmit(event) {
 
   const expenseDiv = document.createElement("div");
   const removeButton = document.createElement("button");
-  removeButton.textContent = "Remove";
+  removeButton.textContent = "Remove Expensegit";
   removeButton.addEventListener("click", () => {
     removeExpense(expenseDiv);
   });

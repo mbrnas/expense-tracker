@@ -54,25 +54,8 @@ expenseForm.addEventListener("submit", handleFormSubmit);
 //function to remove expense on click of remove button
 function removeExpense(expenseDiv) {
   expenseDiv.remove();
+  location.reload();
 
-  const transactionValue = expenseDiv.textContent.split(",")[0];
-  const categoryValue = expenseDiv.textContent.split("spent on:")[1].split(",")[0].trim();
-  const dateValue = expenseDiv.textContent.split("on date:")[1].split(",")[0].trim();
-  const amountValue = expenseDiv.textContent.split("amount:")[1].trim();
-
-  const existingExpenseIndex = expenses.findIndex(
-    (expense) =>
-      expense.transaction === transactionValue &&
-      expense.category === categoryValue &&
-      expense.date === dateValue &&
-      expense.amount === amountValue
-  );
-
-  if (existingExpenseIndex !== -1) {
-    expenses.splice(existingExpenseIndex, 1);
-  }
-
-  createPieChart(expenses);
 }
 
 

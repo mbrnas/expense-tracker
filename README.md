@@ -18,7 +18,7 @@ This Expense Tracker is a web application that allows you to track your expenses
 ## Installation
 
 1. Clone the repository:
-2. git clone https://github.com/your-username/expense-tracker.git
+2. git clone https://github.com/mbrnas/expense-tracker.git
 
 Open the index.html file in your web browser.
 
